@@ -7,7 +7,7 @@ import (
 
 func Transfer(senderId uint64, targetId uint64, value int64, repo interfaces.Repository) error {
 	if value <= 0 {
-		return errors.New("uncorrected value")
+		return errors.New("incorrected value")
 	}
 	senderAcc, err1 := repo.GetById(senderId)
 	targetAcc, err2 := repo.GetById(targetId)
@@ -21,7 +21,7 @@ func Transfer(senderId uint64, targetId uint64, value int64, repo interfaces.Rep
 		return errors.New("not enough funds")
 	}
 	if senderId == targetId {
-		return errors.New("impossible to translate to oneself")
+		return errors.New("impossible to transfer to oneself")
 	}
 
 	senderAcc.Balance -= value

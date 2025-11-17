@@ -11,7 +11,7 @@ func Add(id uint64, value int64, repo interfaces.Repository) error {
 		return err
 	}
 	if value < 0 && acc.Balance+value < 0 {
-		return errors.New("unvalid operation")
+		return errors.New("invalid operation")
 	}
 	acc.Balance += value
 	err = repo.Update(acc)
