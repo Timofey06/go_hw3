@@ -6,5 +6,5 @@ import (
 )
 
 func main() {
-	server.StartServer(":8080", repository.NewCSVRepository("../../testdb.csv"))
+	server.StartServer(":8080", repository.NewCSVRepository("testdb.csv"))
 }

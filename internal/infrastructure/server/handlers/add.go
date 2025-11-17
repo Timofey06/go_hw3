@@ -19,6 +19,7 @@ func (handl *handler) Add(w http.ResponseWriter, r *http.Request) {
 	err := handl.service.Add(req.Id, req.Value)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
 	}
 
 	w.Write([]byte("OK"))

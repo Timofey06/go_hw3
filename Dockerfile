@@ -1,4 +1,4 @@
-FROM golang:1.21-alpine AS builder
+FROM golang:1.25.1-alpine AS builder
 WORKDIR /app
 COPY go.mod ./
 RUN go mod download
@@ -9,5 +9,5 @@ RUN go build -o /app/myapp main.go
 FROM alpine:latest
 WORKDIR /app
 COPY --from=builder /app/myapp .
-COPY --from=builder /app/data.csv .
+COPY --from=builder /app/testdb.csv .
 CMD ["./myapp"]

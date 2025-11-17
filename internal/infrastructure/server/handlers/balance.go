@@ -19,6 +19,7 @@ func (handl *handler) Balance(w http.ResponseWriter, r *http.Request) {
 	ans, err := handl.service.Balance(req.Id)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
 	}
 
 	resp := dto.BalanceResponse{Balance: ans}

@@ -19,6 +19,7 @@ func (handl *handler) Transfer(w http.ResponseWriter, r *http.Request) {
 	err := handl.service.Transfer(req.SenderId, req.TargetId, req.Value)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
 	}
 
 	w.Write([]byte("OK"))
